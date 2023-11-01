@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 gem 'cancancan'
+gem 'database_cleaner'
 gem 'devise'
 gem 'htmlbeautifier', '~> 1.4'
-gem 'database_cleaner'
 gem 'psych', '2.2.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.1'
