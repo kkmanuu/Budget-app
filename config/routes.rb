@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories do
-    resources :purchases
+    resources :purchases, only: [:create, :new]
   end
   resources :categorypurchases
   root to: 'static_pages#splash'
