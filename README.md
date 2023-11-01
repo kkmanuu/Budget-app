@@ -145,6 +145,7 @@ If you like this project, show your support by giving the project a ⭐️.
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 I would like to thank Microverse for including this in their curriculum.
+ Major appreciations to Gregoire Vella for the Creative Commons design of this project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
