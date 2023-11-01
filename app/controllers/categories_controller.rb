@@ -1,5 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_ability
+
+  def set_ability
+    @ability = Ability.new(current_user)
+  end
 
   def index
     if current_user
