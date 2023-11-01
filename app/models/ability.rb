@@ -7,6 +7,7 @@ class Ability
     can :manage, :all
 
     can :read, Category
+    can :read, Purchase
     can :create, Category
     can :manage, Category
   end
