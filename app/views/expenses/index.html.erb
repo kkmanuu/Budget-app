@@ -1,0 +1,59 @@
+
+<div class="expen-container">
+<%= render "shared/head", title: 'Expenses', back: true %>
+
+<div class="alert-section">
+  <% if flash[:notice] %>
+    <%= render 'shared/message', message: flash[:notice], status: 'notice' %>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <%= render 'shared/message', message: flash[:alert], status: 'alert' %>
+  <% end %>
+</div>
+
+  <div class="expense-container bg-light">
+    <% if @expenses.empty? %>
+      <div class="no-expense-container text-center">
+        <h2 class="text-white border px-4 py-3 shadow-sm text-md font-semibold">There is no expense for this category</h2>
+      </div>
+    <% else %>
+      <ul class="bg-light m-0 p-0 bg-light">
+        <li class="category-list px-2 d-flex justify-content-between shadow-lg py-5 my-5 bg-white">
+          <h2 class="font-semibold text-md text-black">Total Amount:</h2>
+          <span class="font-semibold text-md">$<%= @total %></span>
+        </li>
+        <li class="category-list  mx-2 d-flex justify-content-between shadow-lg px-3 py-5 my-5 bg-white">
+          <div class="icon-container text-3xl me-4"><%= @category.icon %></div>
+          <div class="text-md opacity-75 font-semibold text-uppercase"><%= @category.name %></div>
+          <%= button_to category_path(@category), method: :delete, class: 'btn' do %>
+            <i class="fas fa-trash text-xl"></i>
+          <% end %>
+        </li>
+
+        <% @expenses.each do |expense| %>
+          <li class="card mx-2 mb-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                  <div class="icon-container text-3xl me-4"><%= @category.icon %></div>
+                  <span class="text-uppercase text-muted font-semibold"><%= expense.name %></span>
+                <span class="font-semibold text-md">$<%= format('%.2f', expense.amount) %></span>
+              </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center p-1">
+              <span class="text-uppercase text-muted font-semibold"><%= expense.created_at.strftime('%d-%m-%Y') %></span>
+              <%= button_to category_expense_path(@category, expense), method: :delete, class: 'btn' do %>
+                <i class="fas fa-trash text-xl"></i>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+<div class="mt-auto">
+  <div class="add-category-container mt- d-flex justify-content-center px-3 py-4">
+    <%= link_to "ADD EXPENSE", new_category_expense_path(category_id: @category.id), class: 'btn btn-outline-light btn-lg text-white py-3' %>
+  </div>
+</div>
+</div>

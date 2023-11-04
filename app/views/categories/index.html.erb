@@ -1,35 +1,55 @@
-<div class="container">
-<div class="d-flex justify-content-between">
-  <h3>All Categories</h3>
-  <%= link_to 'Sign out', let_user_logout_path, method: :delete %>
-</div>
+<section class="category-section">
+  <div class="category-container">
+    <%= render "shared/head", title: 'categories', back: false %>
+    <div class="success-fail">
+      <% if flash[:notice] %>
+        <%= render 'shared/message', message: flash[:notice], status: 'success' %>
+      <% end %>
 
-  <div class="categories">
-    <% @user.categories.each_with_index do |cat, index|%>
-      <%= link_to category_path(cat) do %>
-        <div class="category card mb-3">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="<%= cat.icon %>" class="img-fluid" alt="<%= cat.name %>" style="height: 100px; width:100px;">
-            </div>
-            <div class="col-md-8">
-            <div class="card-body text-dark">
-            <div class="d-flex justify-content-between">
-              <h5 class="card-title"><%= cat.name %></h5>
-              <p class="card-text">Amount: $<%= @totals[index] %></p>
-            </div>
-            <div>
-              <p class="card-text text-left"><%= cat.created_at.strftime("%d %B %Y") %></p>
-            </div>
+      <% if flash[:alert] %>
+        <%= render 'shared/message', message: flash[:alert], status: 'danger' %>
+      <% end %>
+    </div>
+
+    <% if @categories.empty? %>
+      <div class="w-100  d-flex justify-content-center align-items-center">
+        <div class="getting-started-container w-100 p-3 p-md-5">
+          <h2 class="text-center">Getting Started?</h2>
+          <div class="introduction my-3 my-md-5">
+            <p>A mobile web application where you can manage your budget: you have a list of transactions associated with a category,
+              so that you can see how much money you spent and on what.</p>
           </div>
-
-            </div>
+          <div class="for-category my-3 my-md-5">
+            <h2>Category</h2>
+            <p>
+              For each category, the user can see their name, icon and the total amount of all the transactions that belong to that category.
+              When the user clicks (or taps) on a category item, the application navigates to the transactions page for that category.
+              There is a button "add a new category" at the bottom that brings the user to the page to create a new category.
+            </p>
+          </div>
+          <div class="for-expense my-3 my-md-5">
+            <h2>Expense</h2>
+            <p>
+              Here, you can view and manage transactions in a specific category. The total category amount is displayed at the top. To add a new transaction, scroll down and click "Add a New Transaction." Use the "<" button to return to the home page. Enjoy!
+            </p>
           </div>
         </div>
-      <% end %>
+      </div>
+    <% else %>
+      <ul class="list-group mt-5 category-container bg-light">
+        <% @categories.each do |category| %>
+          <%= link_to category_expenses_path(category_id: category.id), class: 'list-group-item list-group-item-action d-flex justify-content-between align-items-center mb-3' do %>
+            <div class="text-4xl me-2 me-md-4"><%= category.icon %></div>
+            <div class="text-lg font-weight-bold"><%= category.name %></div>
+            <div class="text-lg font-weight-bold">$<%= format('%.2f', category.expenses.sum(:amount)) %></div>
+          <% end %>
+        <% end %>
+      </ul>
     <% end %>
+<div class="mt-auto">
+      <div class="add-category-container d-flex justify-content-center px-3 px-md-5 py-3">
+        <%= link_to "ADD CATEGORY", new_category_path, class: 'btn btn-outline-light btn-lg' %>
+      </div>
+    </div>
   </div>
-  <div class="text-center mt-3">
-    <%= link_to 'Add A New Category', new_category_path, class: "btn btn-primary" %>
-  </div>
-</div>
+</section>
