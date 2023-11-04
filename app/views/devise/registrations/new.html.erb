@@ -1,39 +1,30 @@
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-  <div style="width: 80%;">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-      <h2>Sign up</h2>
+<%= render 'shared/head', title: 'register', back: true %>
+<div class="container-fluid vh-100 pt-10">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form' }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="mb-3 py-3">
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'Full Name', class: 'form-control py-2 border-bottom mx-auto' %>
+        </div>
 
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-      </div>
+        <div class="mb-3 py-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'form-control py-2 border-bottom mx-auto' %>
+        </div>
 
-      <div class="form-group">
-        <%= f.label :full_name %>
-        <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
-      </div>
+        <div class="mb-3 py-3">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Password', class: 'form-control py-2 border-bottom mx-auto' %>
+        </div>
 
-      <div class="form-group">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+        <div class="pt-3">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Confirm Password', class: 'form-control py-2 border-bottom mx-auto' %>
+        </div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-      </div>
+    <div class="actions d-flex justify-content-center px-5 py-7 sign-up-container mt-5 py-3">
+  <%= f.submit "Sign up", class: 'btn btn-outline-light text-center py-3' %>
+</div>
 
-      <div class="form-group">
-        <%= f.submit "Sign up", class: "btn btn-primary" %>
-      </div>
-
-      <div class="form-group">
-        <%= render "devise/shared/links"%>
-      </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
