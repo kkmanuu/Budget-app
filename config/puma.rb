@@ -22,7 +22,7 @@ end
 # terminating a worker in development environments.
 worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
-workers ENV.fetch("WEB_CONCURRENCY") { 4 }
+# workers ENV.fetch("WEB_CONCURRENCY") { 4 }
 
 preload_app!
 

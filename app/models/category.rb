@@ -1,8 +1,6 @@
 class Category < ApplicationRecord
-  validates :name, presence: true
-  validates :icon, presence: true
-
-  has_many :category_purchases
   belongs_to :user
-  has_many :purchases, through: :category_purchases
+  has_many :category_expenses, dependent: :destroy
+  has_many :expenses, through: :category_expenses
+  validates :name, :icon, presence: true
 end

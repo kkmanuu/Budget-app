@@ -1,25 +1,16 @@
 Rails.application.routes.draw do
-  get 'categories/index'
-  get 'categories/show'
-  get 'categories/create'
-  get 'static_pages/splash'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-  devise_for :users, controllers: {
-      registrations: 'users/registrations',
-      sessions: 'users/sessions'
-  }
+  get '/sign_out_user', to: 'users#sign_out_user', as: 'sign_out_user'
 
-  devise_scope :user do
-    get '/users/sign_out', to: 'devise/sessions#destroy', as: :let_user_logout
+  devise_for :users
+  authenticated :user do
+    root "categories#index", as: :authenticated_root
   end
 
-  resources :categories do
-    resources :purchases, only: [:create, :new]
+  unauthenticated do
+    root 'categories#splash', as: :unauthenticated_root
   end
-  resources :categorypurchases
-  root to: 'static_pages#splash'
 
+  resources :categories, only: %i[index new  create destroy] do
+    resources :expenses, only: [:index, :new, :create, :destroy]
+  end
 end
