@@ -1,24 +1,166 @@
-# README
+<h1>Budget-App</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<a name="readme-top"></a>
 
-Things you may want to cover:
+<!-- TABLE OF CONTENTS -->
 
-* Ruby version
+# 📗 Table of Contents
 
-* System dependencies
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 Budget-App](#-blog-app-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Run Test](#run-test)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
-* Configuration
+<!-- PROJECT DESCRIPTION -->
 
-* Database creation
+# 📖 Budget-App <a name="about-project"></a>
 
-* Database initialization
+mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
 
-* How to run the test suite
+## 🛠 Built With <a name="built-with"></a>
 
-* Services (job queues, cache servers, search engines, etc.)
+### Tech Stack <a name="tech-stack"></a>
 
-* Deployment instructions
+- <a href="https://www.postgresql.org/">PostgreSQL</a>
+- <a href="https://rubyonrails.org/">Ruby on Rails</a>
 
-* ...
+<!-- Features -->
+
+### Key Features <a name="key-features"></a>
+
+Key features of the application.
+
+- Creating a data model
+- Processing data in models
+- Setup and controllers
+- Views
+- Forms
+- Add authorization rules
+- Add authentication
+- Use Devise gem
+- Use database migration files to maintain database schema.
+- Use validations for models.
+- Secure app from n+1 problems.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+🚀 Live Demo
+
+ [Click here](https://budget-app-2wzl.onrender.com/)
+
+ [Loom](https://www.loom.com/share/ea5a73967463430daa30fb9137d0e538?sid=0ff09bd5-2288-4622-9758-463cf66e9d98)
+
+<!-- GETTING STARTED -->
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+In order to run this project you need:
+
+- PostgreSQL.
+- Code Editor.
+- Ruby On Rails.
+- CSS
+
+### Setup
+
+Clone this repository to your desired folder:
+
+```sh
+  cd Recipe App
+  gh repo clone https://github.com/kkmanuu/Budget-app
+```
+
+### Install
+
+- Install <a href="https://www.postgresql.org/">PostgreSQL</a>.
+- Install <a href="https://rubyonrails.org/">Ruby On Rails</a>.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Run Test
+To run the testing, execute the following command:
+```
+rspec spec
+```
+
+<!-- AUTHORS -->
+
+## :bust_in_silhouette: Author <a name="authors"></a>
+
+:bust_in_silhouette: *Emmanuel Kipngeno*
+- GitHub: [@githubhandle](https://github.com/kkmanuu)
+- Twitter: [@twitterhandle](https://twitter.com/Kkmanuu1)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/emmanuel-kipngeno/)
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+Features will be added to the project.
+
+Creating a data model
+- **Processing data in models**
+- **Setup and controllers**
+- **Views**
+- **Forms**
+- **Add authorization rules**
+- **Add authentication**
+- **Use Devise gem**
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+Feel free to check the <a href="https://github.com/kkmanuu/Budget-app/issues">Issues</a>.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+
+## ⭐️ Show your support <a name="support"></a>
+
+If you like this project, show your support by giving the project a ⭐️.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I would like to thank Microverse for including this in their curriculum.
+
+ Major appreciations to Gregoire Vella for the Creative Commons design of this project.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENSE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

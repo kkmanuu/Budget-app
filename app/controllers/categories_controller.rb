@@ -1,50 +1,41 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_ability
+  before_action :authenticate_user!, except: [:splash]
 
-  def set_ability
-    @ability = Ability.new(current_user)
-  end
+  ICON_OPTIONS = ['🍔', '🛒', '🚗', '🐶', '📚', '💻', '🎁', '🏠', '🏥', '🎬', '👔', '🎓'].freeze
 
   def index
-    if current_user
-      # Retrieve the user along with their associated categories and purchases.
-      @user = User.includes(categories: :purchases).find(current_user.id)
-      @totals = []
-      @user.categories.each do |cat|
-        total_amt = 0
-        cat.purchases.each do |p|
-          total_amt += p.amount
-        end
-        @totals << total_amt
-      end
-    else
-      redirect_to new_user_session_path, notice: 'Please sign in to view your categories.'
-    end
+    @categories = current_user.categories.includes(:expenses)
   end
 
-  def show
-    @category = Category.includes(:purchases).find(params[:id])
-    @total = 0
-
-    @category.purchases.each do |p|
-      @total += p.amount
-    end
+  def new
+    @category = Category.new
+    @options = ICON_OPTIONS
   end
 
   def create
-    @category = Category.new(category_params)
-    @category.user_id = current_user.id
+    icon = categories_params[:icon].presence || ICON_OPTIONS.first
+
+    @category = current_user.categories.build(categories_params.merge(icon:))
+
     if @category.save
-      redirect_to categories_path, notice: 'Category added'
+      redirect_to categories_path, notice: 'Expense category was successfully created.'
     else
+      flash.now[:alert] = 'Try again. Cannot create a new expense category.'
       render :new
     end
   end
 
+  def splash; end
+
+  def destroy
+    @category = current_user.categories.find(params[:id])
+    @category.destroy
+    redirect_to categories_path, alert: 'Expense category deleted successfully.'
+  end
+
   private
 
-  def category_params
-    params.permit(:name, :icon)
+  def categories_params
+    params.require(:category).permit(:name, :icon).merge(user_id: current_user.id)
   end
 end

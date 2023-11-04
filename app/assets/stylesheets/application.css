@@ -1,16 +1,104 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nova Mono', monospace;
+}
+
+:root {
+  --primary-color: #3778c2;
+  --secondary-color: #5fb523;
+  --text-color: #434b54;
+  --smoke-color: #f5f5f5;
+}
+
+.btn {
+  background-color: var(--secondary-color);
+  color: var(--smoke-color);
+}
+
+.btn:hover {
+  background-color: var(--primary-color);
+  color: var(--smoke-color);
+}
+
+.custom {
+  background-color: var(--primary-color);
+  color: var(--smoke-color);
+}
+
+.splash-title {
+  color: var(--text-color);
+  font-family: cursive;
+}
+
+.icon {
+  color: var(--primary-color);
+}
+
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.add-category-container,
+.sign-up-container {
+  background-color: var(--secondary-color);
+}
+
+.category-container {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.expen-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#category_icon {
+  padding: 10px;
+  display: block;
+  margin: 10px auto;
+  border-bottom: 1px solid var(--text-color);
+  width: 90%;
+  font-size: 20px;
+}
+
+.getting-started-container {
+  background-color: var(--primary-color);
+  border-radius: 12px;
+  border: 1px solid rgb(162, 162, 162);
+}
+
+.no-expense-container h2 {
+  background-color: var(--primary-color);
+  border: 1px solid var(--smoke-color);
+  border-radius: 12px;
+}
+
+.getting-started-container h2 {
+  font-weight: bold;
+  color: white;
+  padding: 8px 0;
+}
+
+.getting-started-container p {
+  color: var(--smoke-color);
+  font-size: small;
+}
+
+.notice {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 10px;
+}
+
+.alert {
+  background-color: red;
+  color: var(--smoke-color);
+  padding: 10px;
+}

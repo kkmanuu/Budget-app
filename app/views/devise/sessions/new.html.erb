@@ -1,26 +1,31 @@
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-  <div style="width: 80%;">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-      <h2>Sign in</h2>
+<%= render 'shared/head', title: 'login', back: true %>
+<div class="container-fluid vh-100 pt-10">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form' }) do |f| %>
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="mb-3 py-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'form-control py-2 border-bottom mx-auto outline-none text-md', required: true %>
+        </div>
 
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-      </div>
+        <div class="mb-3 py-3">
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password', class: 'form-control py-2 border-bottom mx-auto outline-none text-md', required: true %>
+        </div>
 
-      <div class="form-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-      </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="mb-3 px-3 text-gray-500 text-16px">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
 
-      <div class="form-group">
-        <%= f.submit "Sign in", class: "btn btn-primary" %>
+        <div class="text-center py-3 text-md text-gray-400 text-lg mt-4">
+          <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+        </div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <%= render "devise/shared/links"%>
-      </div>
-    <% end %>
-  </div>
+    <div class="row justify-content-center px-5 py-7">
+      <%= f.submit "Log in", class: 'btn  text-center text-white py-3' %>
+    </div>
+  <% end %>
 </div>

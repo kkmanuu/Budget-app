@@ -1,26 +1,23 @@
-<div class="container mt-5">
-  <div class="d-flex justify-content-between bg-primary text-light align-items-center">
-    <%= link_to categories_path do %>
-      <i class="bx bxs-chevron-left display-4 text-white"></i>
-    <% end %>
-    <h5 class="card-title">Add New Category</h5>
-  </div>
-
-  <%= form_with model: @category, url: categories_path, html: { class: 'card' } do |f| %>
-    <div class="card-body">
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :icon %>
-        <%= f.text_field :icon, autocomplete: "name", class: "form-control" %>
-      </div>
-
-      <div class="text-center mt-4">
-        <%= f.submit "Add Category", class: "btn btn-primary" %>
-      </div>
+<section class="category-section">
+    <div>
+        <%= render "shared/head", title: "add category", back: true %>
     </div>
-  <% end %>
-</div>
+    <% if flash[:notice].present? %>
+        <div class="notice">
+            <%= flash[:notice] %>
+        </div>
+    <% end %>
+
+    <div class="form-container">
+        <%= form_with model: @category do |form| %>
+            <div class="border p-3 p-md-5">
+                <%= form.text_field :name, required: true, placeholder: "Enter New Category", class: 'form-control' %>
+                <%= form.select :icon, options_for_select(@options, selected: @category.icon), { prompt: "Select an icon" }, class: 'form-select mb-3' %>
+            </div>
+
+            <div class="add-category-container d-flex justify-content-center px-3 px-md-5 py-3 py-md-5">
+                <%= form.submit "Create category", class: 'btn btn-primary btn-lg w-80' %>
+            </div>
+        <% end %>
+    </div>
+</section>
